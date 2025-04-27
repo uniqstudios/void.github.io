@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VOID | Official</title>
+  <title>VOID | Learn Physics & Astrophysics</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
-  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div id="loader">
@@ -17,6 +16,9 @@
     <div class="logo">
       <i data-lucide="hexagon" class="logo-icon"></i> VOID
     </div>
+    <button id="menu-toggle" class="menu-toggle">
+      <i data-lucide="menu"></i>
+    </button>
     <ul>
       <li><a href="#home" class="nav-link"><i data-lucide="home"></i> Home</a></li>
       <li><a href="#about" class="nav-link"><i data-lucide="info"></i> About</a></li>
@@ -26,8 +28,8 @@
   </nav>
 
   <header id="home">
-    <h1>Welcome</h1>
-    <p>to the rendezvous point!</p>
+    <h1>Master Physics & Astrophysics</h1>
+    <p>Explore the universe and understand the laws of nature through engaging lessons and experiments.</p>
     <a href="#home-expanded"><button class="btn-primary">Get Started</button></a>
   </header>
 
@@ -66,28 +68,33 @@
   </footer>
 
   <script>
-    
-window.addEventListener('load', () => {
-    document.getElementById('loader').style.display = 'none';
-    lucide.createIcons();
-  });
-
-  const sections = document.querySelectorAll("section");
-  const navLinks = document.querySelectorAll(".nav-link");
-  const appearOnScroll = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = 1;
-        entry.target.style.transform = "translateY(0)";
-        observer.unobserve(entry.target);
-      }
+    window.addEventListener('load', () => {
+      document.getElementById('loader').style.display = 'none';
+      lucide.createIcons();
+      const toggleBtn = document.getElementById('menu-toggle');
+      const navMenu = document.querySelector('nav ul');
+      toggleBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+      });
     });
-  }, { threshold: 0.1 });
 
-  sections.forEach(section => {
-    appearOnScroll.observe(section);
-  });
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const appearOnScroll = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = "translateY(0)";
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+      appearOnScroll.observe(section);
+    });
   </script>
   
 </body>
 </html>
+
