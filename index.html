@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>VOID | Official</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="loader">
+    <div class="fluent-spinner"></div>
+  </div>
+
+  <nav>
+    <div class="logo">
+      <i data-lucide="hexagon" class="logo-icon"></i> VOID
+    </div>
+    <ul>
+      <li><a href="#home" class="nav-link"><i data-lucide="home"></i> Home</a></li>
+      <li><a href="#about" class="nav-link"><i data-lucide="info"></i> About</a></li>
+      <li><a href="#services" class="nav-link"><i data-lucide="layers"></i> Services</a></li>
+      <li><a href="#contact" class="nav-link"><i data-lucide="mail"></i> Contact</a></li>
+    </ul>
+  </nav>
+
+  <header id="home">
+    <h1>Welcome</h1>
+    <p>to the rendezvous point!</p>
+    <a href="#home-expanded"><button class="btn-primary">Get Started</button></a>
+  </header>
+
+  <section id="home-expanded">
+    <h2><i data-lucide="zap"></i> Latest Highlights</h2>
+    <div class="home-news">
+      <div class="news-item">
+        <img src="https://images.unsplash.com/photo-1581090700227-1d240d52f3e3" alt="Physics Discovery">
+        <h3>Breaking Physics Discovery</h3>
+        <p>New findings are challenging long-held theories about the nature of dark matter!</p>
+      </div>
+      <div class="news-item">
+        <img src="https://images.unsplash.com/photo-1581093588401-047c7f0fc733" alt="Exoplanets">
+        <h3>Exoplanet Exploration</h3>
+        <p>Discoveries of new exoplanets open possibilities for life beyond our solar system.</p>
+      </div>
+    </div>
+
+    <h2 style="margin-top:5rem;"><i data-lucide="flask"></i> Research Breakthroughs</h2>
+    <div class="home-research">
+      <div class="research-item">
+        <img src="https://images.unsplash.com/photo-1530531141654-5993c3016c77" alt="Astrophysics Students">
+        <h3>Astrophysics Innovations</h3>
+        <p>Students are using innovative tools to simulate the behavior of black holes and other cosmic phenomena.</p>
+      </div>
+      <div class="research-item">
+        <img src="https://images.unsplash.com/photo-1527766833261-b09c3163a791" alt="Deep Space Study">
+        <h3>Deep Space Citizen Science</h3>
+        <p>Global collaboration on deep space studies is uncovering new insights into the universe's expansion.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 VOID. All rights reserved.
+  </footer>
+
+  <script>
+    
+window.addEventListener('load', () => {
+    document.getElementById('loader').style.display = 'none';
+    lucide.createIcons();
+  });
+
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".nav-link");
+  const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = 1;
+        entry.target.style.transform = "translateY(0)";
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  sections.forEach(section => {
+    appearOnScroll.observe(section);
+  });
+  </script>
+  
+</body>
+</html>
